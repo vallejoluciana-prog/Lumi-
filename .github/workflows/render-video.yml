@@ -7,6 +7,9 @@ on:
     branches: [ "main" ]
   workflow_dispatch:
 
+permissions:
+  contents: write
+
 jobs:
   render:
     runs-on: ubuntu-latest
@@ -31,3 +34,11 @@ jobs:
         with:
           name: dancing-girls-video
           path: out/dancing-girls.mp4
+
+      - name: Publish release with direct video link
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: video-${{ github.run_id }}
+          name: Dancing Girls video (${{ github.run_id }})
+          prerelease: true
+          files: out/dancing-girls.mp4

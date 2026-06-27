@@ -29,16 +29,19 @@ jobs:
       - name: Render DancingGirls
         run: npx remotion render src/index.ts DancingGirls out/dancing-girls.mp4
 
-      - name: Upload video artifact
+      - name: Render WomanWalkingPark
+        run: npx remotion render src/index.ts WomanWalkingPark out/woman-walking-park.mp4
+
+      - name: Upload video artifacts
         uses: actions/upload-artifact@v4
         with:
-          name: dancing-girls-video
-          path: out/dancing-girls.mp4
+          name: videos
+          path: out/*.mp4
 
-      - name: Publish release with direct video link
+      - name: Publish release with direct video links
         uses: softprops/action-gh-release@v2
         with:
           tag_name: video-${{ github.run_id }}
-          name: Dancing Girls video (${{ github.run_id }})
+          name: Videos (${{ github.run_id }})
           prerelease: true
-          files: out/dancing-girls.mp4
+          files: out/*.mp4

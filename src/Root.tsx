@@ -1,0 +1,36 @@
+import "./index.css";
+import { Composition } from "remotion";
+import { MyComposition } from "./Composition";
+import { DancingGirls } from "./DancingGirls";
+import { WomanWalkingPark } from "./WomanWalkingPark";
+
+export const RemotionRoot: React.FC = () => {
+  return (
+    <>
+      <Composition
+        id="MyComp"
+        component={MyComposition}
+        durationInFrames={60}
+        fps={30}
+        width={1280}
+        height={720}
+      />
+      <Composition
+        id="DancingGirls"
+        component={DancingGirls}
+        durationInFrames={150}
+        fps={30}
+        width={1280}
+        height={720}
+      />
+      <Composition
+        id="WomanWalkingPark"
+        component={WomanWalkingPark}
+        durationInFrames={150}
+        fps={30}
+        width={1280}
+        height={720}
+      />
+    </>
+  );
+};
